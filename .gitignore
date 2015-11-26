@@ -1,0 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+/protected/config/main.php
+/protected/config/database.php
+/images
+/framework
+/assets
+/.idea
