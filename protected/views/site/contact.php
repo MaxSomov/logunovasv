@@ -33,18 +33,18 @@
 <div class="row">
 	<div class="col-md-8">
 		<h2>Отправить сообщение</h2>
-		<form>
+		<form action="index.php?r=site/message" method="post">
 			<div class="control-group form-group">
 					<label>Имя:</label>
-					<input type="text" class="form-control">
+					<input name="name" type="text" class="form-control" <?php if (!Yii::app()->user->isGuest) { ?> value="<?php echo Yii::app()->user->name; ?>" <?php }?>>
 			</div>
 			<div class="control-group form-group">
 					<label>E-mail:</label>
-					<input type="email" class="form-control">
+					<input name="email" type="email" class="form-control">
 			</div>
 			<div class="control-group form-group">
 					<label>Сообщение:</label>
-					<textarea rows="10" cols="100" class="form-control"maxlength="999" style="resize:none"></textarea>
+					<textarea name="message" rows="10" cols="100" class="form-control"maxlength="999" style="resize:none"></textarea>
 			</div>
 			<!-- For success/fail messages -->
 			<button type="submit" class="btn btn-primary">Отправить</button>

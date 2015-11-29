@@ -46,6 +46,18 @@ class SiteController extends Controller
 		}
 	}
 
+
+	public function actionMessage()
+	{
+		$model = new Mail;
+		$model->date = time();
+		$model->name = $_POST['name'];
+		$model->email = $_POST['email'];
+		$model->message = $_POST['message'];
+		$model->status = 1;
+		$model->save();
+		$this->redirect("index.php");
+	}
 	/**
 	 * Displays the contact page
 	 */
