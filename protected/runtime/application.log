@@ -394,3 +394,278 @@ Stack trace:
 REQUEST_URI=/index.php?r=user/view&id=
 HTTP_REFERER=http://logunovasv/index.php
 ---
+2015/11/27 16:41:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "about".' in /home/max/www/logunovasv/framework/web/CController.php:483
+Stack trace:
+#0 /home/max/www/logunovasv/framework/web/CController.php(270): CController->missingAction('about')
+#1 /home/max/www/logunovasv/framework/web/CWebApplication.php(282): CController->run('about')
+#2 /home/max/www/logunovasv/framework/web/CWebApplication.php(141): CWebApplication->runController('site/about')
+#3 /home/max/www/logunovasv/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/max/www/logunovasv/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=site/about
+HTTP_REFERER=http://logunovasv/index.php
+---
+2015/11/27 16:41:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "about".' in /home/max/www/logunovasv/framework/web/CController.php:483
+Stack trace:
+#0 /home/max/www/logunovasv/framework/web/CController.php(270): CController->missingAction('about')
+#1 /home/max/www/logunovasv/framework/web/CWebApplication.php(282): CController->run('about')
+#2 /home/max/www/logunovasv/framework/web/CWebApplication.php(141): CWebApplication->runController('site/about')
+#3 /home/max/www/logunovasv/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/max/www/logunovasv/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=site/about
+HTTP_REFERER=http://logunovasv/index.php
+---
+2015/11/27 16:46:50 [error] [exception.CException] exception 'CException' with message 'Не определено свойство "CWebApplication.iser".' in /home/max/www/logunovasv/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/max/www/logunovasv/framework/base/CModule.php(105): CComponent->__get('iser')
+#1 /home/max/www/logunovasv/protected/views/layouts/main.php(110): CModule->__get('iser')
+#2 /home/max/www/logunovasv/framework/web/CBaseController.php(126): require('/home/max/www/l...')
+#3 /home/max/www/logunovasv/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/max/www/l...', Array, true)
+#4 /home/max/www/logunovasv/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/home/max/www/l...', Array, true)
+#5 /home/max/www/logunovasv/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#6 /home/max/www/logunovasv/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#7 /home/max/www/logunovasv/framework/web/CBaseController.php(214): COutputProcessor->run()
+#8 /home/max/www/logunovasv/framework/web/CBaseController.php(308): CBaseController->endWidget('CContentDecorat...')
+#9 /home/max/www/logunovasv/protected/views/layouts/column1.php(6): CBaseController->endContent()
+#10 /home/max/www/logunovasv/framework/web/CBaseController.php(126): require('/home/max/www/l...')
+#11 /home/max/www/logunovasv/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/max/www/l...', Array, true)
+#12 /home/max/www/logunovasv/framework/web/CController.php(784): CBaseController->renderFile('/home/max/www/l...', Array, true)
+#13 /home/max/www/logunovasv/protected/controllers/SiteController.php(32): CController->render('index')
+#14 /home/max/www/logunovasv/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#15 /home/max/www/logunovasv/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#16 /home/max/www/logunovasv/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#17 /home/max/www/logunovasv/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /home/max/www/logunovasv/framework/web/CWebApplication.php(282): CController->run('')
+#19 /home/max/www/logunovasv/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#20 /home/max/www/logunovasv/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#21 /home/max/www/logunovasv/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/index.php
+HTTP_REFERER=http://logunovasv/index.php?r=site/login
+---
+2015/11/27 18:25:38 [error] [exception.CException] exception 'CException' with message 'Не определено свойство "TeacherModule.password".' in /home/max/www/logunovasv/framework/base/CComponent.php:173
+Stack trace:
+#0 /home/max/www/logunovasv/framework/base/CModule.php(520): CComponent->__set('password', 'password')
+#1 /home/max/www/logunovasv/framework/base/CModule.php(86): CModule->configure(Array)
+#2 /home/max/www/logunovasv/framework/YiiBase.php(206): CModule->__construct('teacher', NULL, Array)
+#3 /home/max/www/logunovasv/framework/base/CModule.php(282): YiiBase::createComponent('teacher.Teacher...', 'teacher', NULL, Array)
+#4 /home/max/www/logunovasv/framework/web/CWebApplication.php(337): CModule->getModule('teacher')
+#5 /home/max/www/logunovasv/framework/web/CWebApplication.php(276): CWebApplication->createController('teacher')
+#6 /home/max/www/logunovasv/framework/web/CWebApplication.php(141): CWebApplication->runController('teacher')
+#7 /home/max/www/logunovasv/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#8 /home/max/www/logunovasv/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php?r=teacher
+---
+2015/11/27 18:25:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "teacher".' in /home/max/www/logunovasv/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/max/www/logunovasv/framework/web/CWebApplication.php(141): CWebApplication->runController('teacher')
+#1 /home/max/www/logunovasv/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/max/www/logunovasv/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=teacher
+---
+2015/11/29 10:53:30 [error] [exception.CException] exception 'CException' with message 'Псевдоним "teacher.TeacherModule" неверен. Убедитесь, что он указывает на существующий PHP файл.' in /home/max/www/logunovasv/framework/YiiBase.php:323
+Stack trace:
+#0 /home/max/www/logunovasv/framework/YiiBase.php(196): YiiBase::import('teacher.Teacher...', true)
+#1 /home/max/www/logunovasv/framework/base/CModule.php(282): YiiBase::createComponent('teacher.Teacher...', 'teacher', NULL, Array)
+#2 /home/max/www/logunovasv/framework/web/CWebApplication.php(337): CModule->getModule('teacher')
+#3 /home/max/www/logunovasv/framework/web/CWebApplication.php(276): CWebApplication->createController('teacher')
+#4 /home/max/www/logunovasv/framework/web/CWebApplication.php(141): CWebApplication->runController('teacher')
+#5 /home/max/www/logunovasv/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /home/max/www/logunovasv/index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/index.php?r=teacher
+---
+2015/11/29 11:16:21 [error] [exception.CException] exception 'CException' with message 'Не определено свойство "DefaultController.layoutPath".' in /home/max/www/logunovasv/framework/base/CComponent.php:173
+Stack trace:
+#0 /home/max/www/logunovasv/protected/modules/teacher/controllers/DefaultController.php(7): CComponent->__set('layoutPath', '/home/max/www/l...')
+#1 /home/max/www/logunovasv/framework/web/actions/CInlineAction.php(49): DefaultController->actionIndex()
+#2 /home/max/www/logunovasv/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#3 /home/max/www/logunovasv/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#4 /home/max/www/logunovasv/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /home/max/www/logunovasv/framework/web/CWebApplication.php(282): CController->run('')
+#6 /home/max/www/logunovasv/framework/web/CWebApplication.php(141): CWebApplication->runController('teacher')
+#7 /home/max/www/logunovasv/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#8 /home/max/www/logunovasv/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php?r=teacher
+---
+2015/11/29 11:56:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "teacher/index".' in /home/max/www/logunovasv/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/max/www/logunovasv/framework/web/CWebApplication.php(141): CWebApplication->runController('teacher/index')
+#1 /home/max/www/logunovasv/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/max/www/logunovasv/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=teacher/index
+HTTP_REFERER=http://logunovasv/index.php?r=teacher
+---
+2015/11/29 11:56:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "teacher/index".' in /home/max/www/logunovasv/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/max/www/logunovasv/framework/web/CWebApplication.php(141): CWebApplication->runController('teacher/index')
+#1 /home/max/www/logunovasv/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/max/www/logunovasv/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=teacher/index
+HTTP_REFERER=http://logunovasv/index.php?r=teacher
+---
+2015/11/29 11:56:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "teacher/index.php".' in /home/max/www/logunovasv/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/max/www/logunovasv/framework/web/CWebApplication.php(141): CWebApplication->runController('teacher/index.p...')
+#1 /home/max/www/logunovasv/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/max/www/logunovasv/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=teacher/index.php
+HTTP_REFERER=http://logunovasv/index.php?r=teacher
+---
+2015/11/29 12:16:41 [error] [exception.CException] exception 'CException' with message 'Псевдоним "application.modules.teacher.Forpupils" неверен. Убедитесь, что он указывает на существующий PHP файл.' in /home/max/www/logunovasv/framework/YiiBase.php:323
+Stack trace:
+#0 /home/max/www/logunovasv/framework/gii/generators/crud/CrudCode.php(59): YiiBase::import('application.mod...', true)
+#1 /home/max/www/logunovasv/framework/validators/CInlineValidator.php(42): CrudCode->validateModel('model', Array)
+#2 /home/max/www/logunovasv/framework/validators/CValidator.php(201): CInlineValidator->validateAttribute(Object(CrudCode), 'model')
+#3 /home/max/www/logunovasv/framework/base/CModel.php(159): CValidator->validate(Object(CrudCode), NULL)
+#4 /home/max/www/logunovasv/framework/gii/CCodeGenerator.php(159): CModel->validate()
+#5 /home/max/www/logunovasv/framework/gii/CCodeGenerator.php(63): CCodeGenerator->prepare()
+#6 /home/max/www/logunovasv/framework/web/actions/CInlineAction.php(49): CCodeGenerator->actionIndex()
+#7 /home/max/www/logunovasv/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#8 /home/max/www/logunovasv/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#9 /home/max/www/logunovasv/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /home/max/www/logunovasv/framework/web/CWebApplication.php(282): CController->run('index')
+#11 /home/max/www/logunovasv/framework/web/CWebApplication.php(141): CWebApplication->runController('gii/crud/index')
+#12 /home/max/www/logunovasv/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#13 /home/max/www/logunovasv/index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/index.php?r=gii/crud/index
+HTTP_REFERER=http://logunovasv/index.php?r=gii/crud/index
+---
+2015/11/29 12:48:52 [error] [php] Undefined variable: post (/home/max/www/logunovasv/protected/modules/teacher/views/forpupils/index.php:11)
+Stack trace:
+#0 /home/max/www/logunovasv/framework/web/CController.php(869): ForpupilsController->renderFile()
+#1 /home/max/www/logunovasv/framework/web/CController.php(782): ForpupilsController->renderPartial()
+#2 /home/max/www/logunovasv/protected/modules/teacher/controllers/ForpupilsController.php(128): ForpupilsController->render()
+#3 /home/max/www/logunovasv/framework/web/actions/CInlineAction.php(49): ForpupilsController->actionIndex()
+#4 /home/max/www/logunovasv/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /home/max/www/logunovasv/framework/web/filters/CFilterChain.php(133): ForpupilsController->runAction()
+#6 /home/max/www/logunovasv/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/max/www/logunovasv/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /home/max/www/logunovasv/framework/web/filters/CInlineFilter.php(58): ForpupilsController->filterAccessControl()
+#9 /home/max/www/logunovasv/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /home/max/www/logunovasv/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/max/www/logunovasv/framework/web/CController.php(265): ForpupilsController->runActionWithFilters()
+#12 /home/max/www/logunovasv/framework/web/CWebApplication.php(282): ForpupilsController->run()
+#13 /home/max/www/logunovasv/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /home/max/www/logunovasv/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/max/www/logunovasv/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=teacher/forpupils
+in /home/max/www/logunovasv/protected/modules/teacher/views/forpupils/index.php (11)
+in /home/max/www/logunovasv/protected/modules/teacher/controllers/ForpupilsController.php (128)
+in /home/max/www/logunovasv/index.php (13)
+2015/11/29 12:50:01 [error] [php] Invalid argument supplied for foreach() (/home/max/www/logunovasv/protected/modules/teacher/views/forpupils/index.php:12)
+Stack trace:
+#0 /home/max/www/logunovasv/framework/web/CController.php(869): ForpupilsController->renderFile()
+#1 /home/max/www/logunovasv/framework/web/CController.php(782): ForpupilsController->renderPartial()
+#2 /home/max/www/logunovasv/protected/modules/teacher/controllers/ForpupilsController.php(128): ForpupilsController->render()
+#3 /home/max/www/logunovasv/framework/web/actions/CInlineAction.php(49): ForpupilsController->actionIndex()
+#4 /home/max/www/logunovasv/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /home/max/www/logunovasv/framework/web/filters/CFilterChain.php(133): ForpupilsController->runAction()
+#6 /home/max/www/logunovasv/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/max/www/logunovasv/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /home/max/www/logunovasv/framework/web/filters/CInlineFilter.php(58): ForpupilsController->filterAccessControl()
+#9 /home/max/www/logunovasv/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /home/max/www/logunovasv/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/max/www/logunovasv/framework/web/CController.php(265): ForpupilsController->runActionWithFilters()
+#12 /home/max/www/logunovasv/framework/web/CWebApplication.php(282): ForpupilsController->run()
+#13 /home/max/www/logunovasv/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /home/max/www/logunovasv/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/max/www/logunovasv/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=teacher/forpupils
+in /home/max/www/logunovasv/protected/modules/teacher/views/forpupils/index.php (12)
+in /home/max/www/logunovasv/protected/modules/teacher/controllers/ForpupilsController.php (128)
+in /home/max/www/logunovasv/index.php (13)
+2015/11/29 13:19:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/max/www/logunovasv/protected/modules/teacher/controllers/ForpupilsController.php:157
+Stack trace:
+#0 /home/max/www/logunovasv/protected/modules/teacher/controllers/ForpupilsController.php(89): ForpupilsController->loadModel('')
+#1 [internal function]: ForpupilsController->actionUpdate('')
+#2 /home/max/www/logunovasv/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ForpupilsController), Array)
+#3 /home/max/www/logunovasv/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ForpupilsController), Object(ReflectionMethod), Array)
+#4 /home/max/www/logunovasv/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/max/www/logunovasv/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/max/www/logunovasv/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/max/www/logunovasv/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/max/www/logunovasv/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/max/www/logunovasv/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/max/www/logunovasv/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/max/www/logunovasv/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/max/www/logunovasv/framework/web/CWebApplication.php(282): CController->run('update')
+#13 /home/max/www/logunovasv/framework/web/CWebApplication.php(141): CWebApplication->runController('teacher/forpupi...')
+#14 /home/max/www/logunovasv/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/max/www/logunovasv/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=teacher/forpupils/update&id=
+HTTP_REFERER=http://logunovasv/index.php?r=teacher/forpupils/view&id=1
+---
+2015/11/29 13:20:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/max/www/logunovasv/protected/modules/teacher/controllers/ForpupilsController.php:157
+Stack trace:
+#0 /home/max/www/logunovasv/protected/modules/teacher/controllers/ForpupilsController.php(89): ForpupilsController->loadModel('')
+#1 [internal function]: ForpupilsController->actionUpdate('')
+#2 /home/max/www/logunovasv/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ForpupilsController), Array)
+#3 /home/max/www/logunovasv/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ForpupilsController), Object(ReflectionMethod), Array)
+#4 /home/max/www/logunovasv/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/max/www/logunovasv/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/max/www/logunovasv/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/max/www/logunovasv/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/max/www/logunovasv/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/max/www/logunovasv/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/max/www/logunovasv/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/max/www/logunovasv/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/max/www/logunovasv/framework/web/CWebApplication.php(282): CController->run('update')
+#13 /home/max/www/logunovasv/framework/web/CWebApplication.php(141): CWebApplication->runController('teacher/forpupi...')
+#14 /home/max/www/logunovasv/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/max/www/logunovasv/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=teacher/forpupils/update&id=
+HTTP_REFERER=http://logunovasv/index.php?r=teacher/forpupils/view&id=1
+---
+2015/11/29 14:10:05 [error] [exception.CException] exception 'CException' with message 'Контроллер ForparentsController не может найти представление "update".' in /home/max/www/logunovasv/framework/web/CController.php:878
+Stack trace:
+#0 /home/max/www/logunovasv/framework/web/CController.php(782): CController->renderPartial('update', Array, true)
+#1 /home/max/www/logunovasv/protected/controllers/ForparentsController.php(103): CController->render('update', Array)
+#2 [internal function]: ForparentsController->actionUpdate('1')
+#3 /home/max/www/logunovasv/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ForparentsController), Array)
+#4 /home/max/www/logunovasv/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ForparentsController), Object(ReflectionMethod), Array)
+#5 /home/max/www/logunovasv/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/max/www/logunovasv/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/max/www/logunovasv/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/max/www/logunovasv/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/max/www/logunovasv/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/max/www/logunovasv/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/max/www/logunovasv/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/max/www/logunovasv/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/max/www/logunovasv/framework/web/CWebApplication.php(282): CController->run('update')
+#14 /home/max/www/logunovasv/framework/web/CWebApplication.php(141): CWebApplication->runController('forparents/upda...')
+#15 /home/max/www/logunovasv/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#16 /home/max/www/logunovasv/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?r=forparents/update&id=1
+---
+2015/11/29 14:11:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "update".' in /home/max/www/logunovasv/framework/web/CController.php:483
+Stack trace:
+#0 /home/max/www/logunovasv/framework/web/CController.php(270): CController->missingAction('update')
+#1 /home/max/www/logunovasv/framework/web/CWebApplication.php(282): CController->run('update')
+#2 /home/max/www/logunovasv/framework/web/CWebApplication.php(141): CWebApplication->runController('forparents/upda...')
+#3 /home/max/www/logunovasv/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/max/www/logunovasv/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=forparents/update&id=1
+---
+2015/11/29 14:11:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "create".' in /home/max/www/logunovasv/framework/web/CController.php:483
+Stack trace:
+#0 /home/max/www/logunovasv/framework/web/CController.php(270): CController->missingAction('create')
+#1 /home/max/www/logunovasv/framework/web/CWebApplication.php(282): CController->run('create')
+#2 /home/max/www/logunovasv/framework/web/CWebApplication.php(141): CWebApplication->runController('forparents/crea...')
+#3 /home/max/www/logunovasv/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/max/www/logunovasv/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=forparents/create
+---

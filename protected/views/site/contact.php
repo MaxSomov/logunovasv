@@ -3,83 +3,52 @@
 /* @var $model ContactForm */
 /* @var $form CActiveForm */
 
-$this->pageTitle=Yii::app()->name . ' - Contact Us';
-$this->breadcrumbs=array(
-	'Contact',
-);
+//$this->pageTitle=Yii::app()->name . ' - Contact Us';
+//$this->breadcrumbs=array(
+//	'Contact',
+//);
 ?>
 
-<h1>Contact Us</h1>
+<h1>Контактная информация</h1>
 
-<?php if(Yii::app()->user->hasFlash('contact')): ?>
+<ol class="breadcrumb">
+	<li><a href="index.php">Главная</a>
+	</li>
+	<li class="active">Контактная информация</li>
+</ol>
 
-<div class="flash-success">
-	<?php echo Yii::app()->user->getFlash('contact'); ?>
+<div class="row">
+	<div class="col-md-8">
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4018.644991285154!2d44.90821072099433!3d53.22102050173523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x5529d5ed4887fc19!2z0KjQutC-0LvQsCDihJYgMzY!5e0!3m2!1sru!2sru!4v1448634926182" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+	</div>
+
+	<div class="col-md-4">
+		<p><i class="fa fa-map-marker"></i> Россия, Пензенская область, г. Пенза, ул. Собинова, 6
+		<p><i class="fa fa-envelope"></i> <a href="mailto:email@address.com">email@address.com</a>
+		<p><i class="fa fa-phone"></i> +7 (987) 654 32 12
+		<p><i class="fa fa-skype"></i> <a href="skype:skypename?call">Skype Name</a>
+		<p><i class="fa fa-odnoklassniki"></i> <a href="http://ok.ru" target="_blank">Одноклассники</a>
+	</div>
 </div>
-
-<?php else: ?>
-
-<p>
-If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.
-</p>
-
-<div class="form">
-
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'contact-form',
-	'enableClientValidation'=>true,
-	'clientOptions'=>array(
-		'validateOnSubmit'=>true,
-	),
-)); ?>
-
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'name'); ?>
-		<?php echo $form->textField($model,'name'); ?>
-		<?php echo $form->error($model,'name'); ?>
+<div class="row">
+	<div class="col-md-8">
+		<h2>Отправить сообщение</h2>
+		<form>
+			<div class="control-group form-group">
+					<label>Имя:</label>
+					<input type="text" class="form-control">
+			</div>
+			<div class="control-group form-group">
+					<label>E-mail:</label>
+					<input type="email" class="form-control">
+			</div>
+			<div class="control-group form-group">
+					<label>Сообщение:</label>
+					<textarea rows="10" cols="100" class="form-control"maxlength="999" style="resize:none"></textarea>
+			</div>
+			<!-- For success/fail messages -->
+			<button type="submit" class="btn btn-primary">Отправить</button>
+		</form>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'email'); ?>
-		<?php echo $form->textField($model,'email'); ?>
-		<?php echo $form->error($model,'email'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'subject'); ?>
-		<?php echo $form->textField($model,'subject',array('size'=>60,'maxlength'=>128)); ?>
-		<?php echo $form->error($model,'subject'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'body'); ?>
-		<?php echo $form->textArea($model,'body',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'body'); ?>
-	</div>
-
-	<?php if(CCaptcha::checkRequirements()): ?>
-	<div class="row">
-		<?php echo $form->labelEx($model,'verifyCode'); ?>
-		<div>
-		<?php $this->widget('CCaptcha'); ?>
-		<?php echo $form->textField($model,'verifyCode'); ?>
-		</div>
-		<div class="hint">Please enter the letters as they are shown in the image above.
-		<br/>Letters are not case-sensitive.</div>
-		<?php echo $form->error($model,'verifyCode'); ?>
-	</div>
-	<?php endif; ?>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Submit'); ?>
-	</div>
-
-<?php $this->endWidget(); ?>
-
-</div><!-- form -->
-
-<?php endif; ?>
+</div>

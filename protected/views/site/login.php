@@ -11,6 +11,11 @@ $this->breadcrumbs=array(
 
 <h1>Вход</h1>
 
+<ol class="breadcrumb">
+	<li><a href="index.php">Главная</a>
+	</li>
+	<li class="active">Вход</li>
+</ol>
 
 <div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(

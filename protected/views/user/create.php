@@ -13,6 +13,13 @@
 //);
 ?>
 
-<h1>Регистрация</h1>
+    <h1>Регистрация</h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+    <ol class="breadcrumb">
+        <li><a href="index.php">Главная</a>
+        </li>
+        <li class="active">Регистрация</li>
+    </ol>
+
+
+<?php $this->renderPartial('_form', array('model' => $model)); ?>
