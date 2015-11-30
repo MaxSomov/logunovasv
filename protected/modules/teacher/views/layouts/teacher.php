@@ -1,5 +1,10 @@
 <?php /* @var $this Controller */ ?>
 <?php
+
+$user = User::model()->findByPk(Yii::app()->user->getId());
+if (!Yii::app()->user->isGuest)
+    if ($user->status == 1)
+    {
     $mail = Mail::model()->findAllByAttributes(array("status"=>1));
 ?>
 <!DOCTYPE html>
@@ -123,7 +128,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="blank-page.html"><i class="fa fa-fw fa-newspaper-o"></i> Записи</a>
+                    <a href="index.php?r=teacher/post"><i class="fa fa-fw fa-newspaper-o"></i> Записи</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-fw fa-picture-o"></i> Фотоальбомы</a>
@@ -167,3 +172,4 @@
 
 </body>
 </html>
+<?php } else echo "Ошибка доступа";?>

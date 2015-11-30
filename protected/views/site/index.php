@@ -10,15 +10,25 @@ $this->pageTitle=Yii::app()->name;
 	<li class="active">Главная</li>
 </ol>
 
-<p>Congratulations! You have successfully created your Yii application.</p>
+<?php
 
-<p>You may change the content of this page by modifying the following two files:</p>
-<ul>
-	<li>View file: <code><?php echo __FILE__; ?></code></li>
-	<li>Layout file: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
-</ul>
+$posts = Post::model()->findAll(array('order'=>'date DESC'));
+$p = array_slice($posts, 0, 5);
+foreach ($p as $post)
+{
+	?>
 
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
+	<h2>
+		<a href="index.php?r=post/view&id=<?php echo $post->id; ?>"><?php echo $post->head;?></a>
+	</h2>
+	<p><i class="fa fa-clock-o"></i> <?php echo date('d.m.Y, H:i', $post->date); ?></p>
+	<br>
+	<?php $pices = explode("<div style=\"page-break-after: always\"><span style=\"display:none\">&nbsp;</span></div>", $post->content); echo $pices[0]; ?><br>
+	<a class="btn btn-primary" href="index.php?r=post/view&id=<?php echo $post->id; ?>">Читать далее <i class="fa fa-angle-right"></i></a>
+	<hr>
+
+<?php
+}
+?>
+
+<a href="index.php?r=post" class="btn btn-default">Все записи</a>
