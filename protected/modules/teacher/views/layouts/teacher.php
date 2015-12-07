@@ -134,7 +134,7 @@ if (!Yii::app()->user->isGuest)
                     <a href="#"><i class="fa fa-fw fa-picture-o"></i> Фотоальбомы</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-pencil"></i> Тесты</a>
+                    <a href="index.php?r=teacher/test"><i class="fa fa-fw fa-pencil"></i> Тесты</a>
                 </li>
             </ul>
         </div>
