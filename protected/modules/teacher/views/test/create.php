@@ -16,76 +16,144 @@
 </form>
 
 <script type="text/javascript">
+	//TODO: !!Удаление ответов!!
+	//Количество вопросов
+	var qCountField = document.getElementById('qCount');
 
-	var qCountField = document.getElementById('qCount')
+	//Форма
+	var questions = document.getElementById('quest_list');
 
-	var questions = document.getElementById('quest_list')
+	var questionCount = 0;
+	var answerCount = [];
 
-	var questionCount = 0
-	var answerCount = new Array()
-
-	var addQuestion = document.createElement('a')
-	addQuestion.innerHTML = "Добавить вопрос"
-	addQuestion.setAttribute("onselectstart", "return false")
-	addQuestion.setAttribute("onmousedown", "return false")
-	addQuestion.setAttribute("style", "cursor:default")
+	//Кнопка "Добавить вопрос"
+	var addQuestion = document.createElement('a');
+	addQuestion.innerHTML = "Добавить вопрос";
+	addQuestion.setAttribute("onselectstart", "return false");
+	addQuestion.setAttribute("onmousedown", "return false");
+	addQuestion.setAttribute("style", "cursor:default");
 	addQuestion.onclick = function () {
 
-		questions.appendChild(document.createElement('hr'))
+		//Блок вопроса
+		var questionDiv = document.createElement('div');
+		questionDiv.id = "question_div_"+questionCount;
+//		questionDiv.innerHTML = "Вопрос "+(questionCount+1)
+		questions.appendChild(questionDiv);
 
-		var questionDiv = document.createElement('div')
-		questionDiv.id = "question_div_"+questionCount
-		questionDiv.innerHTML = "<p>Вопрос "+(questionCount+1)+"</p>"
-		questions.appendChild(questionDiv)
+		//Номер вопроса (можно удалить)
+		questionDiv.appendChild(document.createElement('hr'));
+		var text = document.createElement('label');
+		text.id = "label_"+questionCount;
+		text.innerHTML = "Вопрос "+(questionCount+1);
+		questionDiv.appendChild(text);
 
-		var aCountField = document.createElement('input')
-		aCountField.type = "text"
-		aCountField.name = "aCount_"+questionCount
-		aCountField.id = "aCount_"+questionCount
-		aCountField.setAttribute("value", "0")
-		aCountField.setAttribute("style", "display:none")
-		questionDiv.appendChild(aCountField)
+		//Удаление вопроса
+		var deleteQuestion = document.createElement('a');
+		deleteQuestion.innerHTML = " Удалить<br>";
+		deleteQuestion.setAttribute("onselectstart", "return false");
+		deleteQuestion.setAttribute("onmousedown", "return false");
+		deleteQuestion.setAttribute("style", "cursor:default");
+		deleteQuestion.id = "delete_"+questionCount;
+		deleteQuestion.onclick = function () {
 
-		var questionField = document.createElement('input')
-		questionField.type = "text"
-		questionField.name = "question_"+questionCount
-		questionDiv.appendChild(questionField)
+			//Идентификатор удаляемого вопроса
+			var removeId = this.id.split('_');
 
-		answerCount[questionCount] = 0
+			//Удаление блока
+			questions.removeChild(document.getElementById('question_div_'+removeId[1]));
 
-		var addAnswer = document.createElement('a')
-		addAnswer.innerHTML = "<p>Добавить ответ</p>"
-		addAnswer.id = "add_answer_"+questionCount
-		addAnswer.setAttribute("onselectstart", "return false")
-		addAnswer.setAttribute("onmousedown", "return false")
-		addAnswer.setAttribute("style", "cursor:default")
+			//Сдвиг следующих за удаляемым вопросом блоков вверх
+			var n = removeId[1];
+			n++;
+			var i;
+			for (i=n; i<questionCount; i++)
+			{
+				document.getElementById('question_div_'+i).id = "question_div_"+(i-1);
+				document.getElementById('label_'+i).innerHTML = "Вопрос "+i;
+				document.getElementById('label_'+i).id = "label_"+(i-1);
+				document.getElementById('delete_'+i).id = "delete_"+(i-1);
+				var ac = document.getElementById('aCount_'+i).value;
+				document.getElementById('aCount_'+i).name = "aCount_"+(i-1);
+				document.getElementById('aCount_'+i).id = "aCount_"+(i-1);
+				document.getElementById('question_'+i).name = "question_"+(i-1);
+				document.getElementById('question_'+i).id = "question_"+(i-1);
+				document.getElementById('add_answer_'+i).id = "add_answer_"+(i-1);
+				for (var j=0; j<ac; j++)
+				{
+					document.getElementById('answer_div_'+i+"_"+j).id = "answer_div_"+(i-1)+"_"+j;
+					document.getElementById('answer_is_true'+i+'_'+j).name = "answer_is_true_"+(i-1)+"_"+j;
+					document.getElementById('answer_is_true'+i+'_'+j).id = "answer_is_true_"+(i-1)+"_"+j;
+					document.getElementById('answer_'+i+'_'+j).name = "answer_is_true_"+(i-1)+"_"+j;
+					document.getElementById('answer_'+i+'_'+j).id = "answer_is_true_"+(i-1)+"_"+j;
+				}
+
+				//Уменьшение числа вопросов
+				questionCount--;
+				document.getElementById('qCount').setAttribute("value", questionCount);
+
+				// TODO: Проверить значение поля qCount после удаления элементов
+			}
+		};
+		questionDiv.appendChild(deleteQuestion);
+
+		//Количество ответов
+		var aCountField = document.createElement('input');
+		aCountField.type = "text";
+		aCountField.name = "aCount_"+questionCount;
+		aCountField.id = "aCount_"+questionCount;
+		aCountField.setAttribute("value", "0");
+		aCountField.setAttribute("style", "display:none");
+		questionDiv.appendChild(aCountField);
+
+		//Ввод вопроса
+		var questionField = document.createElement('input');
+		questionField.type = "text";
+		questionField.id = "question_"+questionCount;
+		questionField.name = "question_"+questionCount;
+		questionDiv.appendChild(questionField);
+
+		//Счетчик ответов
+		answerCount[questionCount] = 0;
+
+		//Кнопка добавления ответа
+		var addAnswer = document.createElement('a');
+		addAnswer.innerHTML = "<p>Добавить ответ</p>";
+		addAnswer.id = "add_answer_"+questionCount;
+		addAnswer.setAttribute("onselectstart", "return false");
+		addAnswer.setAttribute("onmousedown", "return false");
+		addAnswer.setAttribute("style", "cursor:default");
 		addAnswer.onclick = function () {
-			var id = this.id.split("_")
+			var id = this.id.split("_");
 
-			var answerDiv = document.createElement('div')
-			answerDiv.id = "answer_div_"+id[2]+"_"+answerCount[id[2]]
-			questionDiv.appendChild(answerDiv)
+			//Блок ответа
+			var answerDiv = document.createElement('div');
+			answerDiv.id = "answer_div_"+id[2]+"_"+answerCount[id[2]];
+			questionDiv.appendChild(answerDiv);
 
-			var answerIsTrue = document.createElement('input')
-			answerIsTrue.type = "checkbox"
-			answerIsTrue.name = "answer_is_true_"+id[2]+"_"+answerCount[id[2]]
-			answerDiv.appendChild(answerIsTrue)
+			//Верный ответ
+			var answerIsTrue = document.createElement('input');
+			answerIsTrue.type = "checkbox";
+			answerIsTrue.id = "answer_is_true_"+id[2]+"_"+answerCount[id[2]];
+			answerIsTrue.name = "answer_is_true_"+id[2]+"_"+answerCount[id[2]];
+			answerDiv.appendChild(answerIsTrue);
 
-			var answerField = document.createElement('input')
-			answerField.type = "text"
-			answerField.name = "answer_"+id[2]+"_"+answerCount[id[2]]
-			answerDiv.appendChild(answerField)
+			//Ввод ответа
+			var answerField = document.createElement('input');
+			answerField.type = "text";
+			answerField.id = "answer_"+id[2]+"_"+answerCount[id[2]];
+			answerField.name = "answer_"+id[2]+"_"+answerCount[id[2]];
+			answerDiv.appendChild(answerField);
 
-			answerCount[id[2]]++
+			answerCount[id[2]]++;
 //                alert(id[2])
 			document.getElementById("aCount_"+id[2]).setAttribute("value", answerCount[id[2]])
 
-		}
-		questionDiv.appendChild(addAnswer)
+		};
+		questionDiv.appendChild(addAnswer);
 
-		questionCount++
+		questionCount++;
 		qCountField.setAttribute("value", questionCount)
-	}
+	};
 
 	questions.appendChild(addQuestion)
 
