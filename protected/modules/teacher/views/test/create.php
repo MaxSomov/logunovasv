@@ -16,7 +16,6 @@
 </form>
 
 <script type="text/javascript">
-	//TODO: !!Удаление ответов!!
 	//Количество вопросов
 	var qCountField = document.getElementById('qCount');
 
@@ -33,6 +32,8 @@
 	addQuestion.setAttribute("onmousedown", "return false");
 	addQuestion.setAttribute("style", "cursor:default");
 	addQuestion.onclick = function () {
+
+		questionCount = parseInt(document.getElementById('qCount').value);
 
 		//Блок вопроса
 		var questionDiv = document.createElement('div');
@@ -55,6 +56,8 @@
 		deleteQuestion.setAttribute("style", "cursor:default");
 		deleteQuestion.id = "delete_"+questionCount;
 		deleteQuestion.onclick = function () {
+
+			questionCount = parseInt(document.getElementById('qCount').value);
 
 			//Идентификатор удаляемого вопроса
 			var removeId = this.id.split('_');
@@ -81,18 +84,16 @@
 				for (var j=0; j<ac; j++)
 				{
 					document.getElementById('answer_div_'+i+"_"+j).id = "answer_div_"+(i-1)+"_"+j;
-					document.getElementById('answer_is_true'+i+'_'+j).name = "answer_is_true_"+(i-1)+"_"+j;
-					document.getElementById('answer_is_true'+i+'_'+j).id = "answer_is_true_"+(i-1)+"_"+j;
-					document.getElementById('answer_'+i+'_'+j).name = "answer_is_true_"+(i-1)+"_"+j;
-					document.getElementById('answer_'+i+'_'+j).id = "answer_is_true_"+(i-1)+"_"+j;
+					document.getElementById('answer_is_true_'+i+'_'+j).name = "answer_is_true_"+(i-1)+"_"+j;
+					document.getElementById('answer_is_true_'+i+'_'+j).id = "answer_is_true_"+(i-1)+"_"+j;
+					document.getElementById('answer_'+i+'_'+j).name = "answer_"+(i-1)+"_"+j;
+					document.getElementById('answer_'+i+'_'+j).id = "answer_"+(i-1)+"_"+j;
 				}
-
-				//Уменьшение числа вопросов
-				questionCount--;
-				document.getElementById('qCount').setAttribute("value", questionCount);
-
-				// TODO: Проверить значение поля qCount после удаления элементов
 			}
+			//Уменьшение числа вопросов
+			questionCount--;
+//			alert(questionCount);
+			document.getElementById('qCount').setAttribute("value", questionCount);
 		};
 		questionDiv.appendChild(deleteQuestion);
 
@@ -102,7 +103,7 @@
 		aCountField.name = "aCount_"+questionCount;
 		aCountField.id = "aCount_"+questionCount;
 		aCountField.setAttribute("value", "0");
-		aCountField.setAttribute("style", "display:none");
+//		aCountField.setAttribute("style", "display:none");
 		questionDiv.appendChild(aCountField);
 
 		//Ввод вопроса
@@ -123,7 +124,10 @@
 		addAnswer.setAttribute("onmousedown", "return false");
 		addAnswer.setAttribute("style", "cursor:default");
 		addAnswer.onclick = function () {
+
 			var id = this.id.split("_");
+
+			answerCount[id[2]] = parseInt(document.getElementById('aCount_'+id[2]).value);
 
 			//Блок ответа
 			var answerDiv = document.createElement('div');
@@ -143,6 +147,35 @@
 			answerField.id = "answer_"+id[2]+"_"+answerCount[id[2]];
 			answerField.name = "answer_"+id[2]+"_"+answerCount[id[2]];
 			answerDiv.appendChild(answerField);
+
+			//Удаление ответа
+			var deleteAnswer = document.createElement('a');
+			deleteAnswer.innerHTML = "Удалить";
+			deleteAnswer.id = "deleteA_"+id[2]+"_"+answerCount[id[2]];
+			deleteAnswer.setAttribute("onselectstart", "returne false");
+			deleteAnswer.setAttribute("onmousedown", "return false");
+			deleteAnswer.setAttribute("style", "cursor:default");
+			deleteAnswer.onclick = function () {
+				var rm = this.id.split("_");
+				var count = parseInt(document.getElementById('aCount_'+rm[1]).value);
+				var i;
+				var a=parseInt(rm[2]);
+				var b = parseInt(rm[1]);
+				document.getElementById('question_div_'+rm[1]).removeChild(document.getElementById('answer_div_'+b+'_'+a));
+				for (i=a+1; i<count; i++)
+				{
+//					alert(i);
+					document.getElementById('answer_div_'+b+'_'+i).id = "answer_div_"+b+"_"+(i-1);
+					document.getElementById('answer_is_true_'+b+'_'+i).name = "answer_is_true_"+b+"_"+(i-1);
+					document.getElementById('answer_is_true_'+b+'_'+i).id = "answer_is_true_"+b+"_"+(i-1);
+					document.getElementById('answer_'+b+'_'+i).name = "answer_"+b+"_"+(i-1);
+					document.getElementById('answer_'+b+'_'+i).id = "answer_"+b+"_"+(i-1);
+					document.getElementById('deleteA_'+b+'_'+i).id = "deleteA_"+b+"_"+(i-1);
+				}
+				count--;
+				document.getElementById('aCount_'+rm[1]).setAttribute("value", count);
+			};
+			answerDiv.appendChild(deleteAnswer);
 
 			answerCount[id[2]]++;
 //                alert(id[2])

@@ -1619,3 +1619,47 @@ Stack trace:
 REQUEST_URI=/index.php?r=teacher/test/new
 in /home/max/www/logunovasv/protected/modules/teacher/controllers/TestController.php (70)
 in /home/max/www/logunovasv/index.php (13)
+2015/12/08 11:26:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/max/www/logunovasv/protected/modules/teacher/controllers/TestController.php:188
+Stack trace:
+#0 /home/max/www/logunovasv/protected/modules/teacher/controllers/TestController.php(88): TestController->loadModel('')
+#1 [internal function]: TestController->actionView('')
+#2 /home/max/www/logunovasv/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(TestController), Array)
+#3 /home/max/www/logunovasv/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(TestController), Object(ReflectionMethod), Array)
+#4 /home/max/www/logunovasv/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/max/www/logunovasv/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/max/www/logunovasv/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/max/www/logunovasv/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/max/www/logunovasv/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/max/www/logunovasv/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/max/www/logunovasv/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/max/www/logunovasv/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/max/www/logunovasv/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/max/www/logunovasv/framework/web/CWebApplication.php(141): CWebApplication->runController('teacher/test/vi...')
+#14 /home/max/www/logunovasv/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/max/www/logunovasv/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=teacher/test/view&id=
+HTTP_REFERER=http://logunovasv/index.php?r=teacher/test/create
+---
+2015/12/08 11:36:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/max/www/logunovasv/protected/modules/teacher/controllers/TestController.php:188
+Stack trace:
+#0 /home/max/www/logunovasv/protected/modules/teacher/controllers/TestController.php(88): TestController->loadModel('')
+#1 [internal function]: TestController->actionView('')
+#2 /home/max/www/logunovasv/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(TestController), Array)
+#3 /home/max/www/logunovasv/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(TestController), Object(ReflectionMethod), Array)
+#4 /home/max/www/logunovasv/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/max/www/logunovasv/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/max/www/logunovasv/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/max/www/logunovasv/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/max/www/logunovasv/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/max/www/logunovasv/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/max/www/logunovasv/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/max/www/logunovasv/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/max/www/logunovasv/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/max/www/logunovasv/framework/web/CWebApplication.php(141): CWebApplication->runController('teacher/test/vi...')
+#14 /home/max/www/logunovasv/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/max/www/logunovasv/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=teacher/test/view&id=
+HTTP_REFERER=http://logunovasv/index.php?r=teacher/test/create
+---
