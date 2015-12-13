@@ -2,29 +2,50 @@
 /* @var $this TestController */
 /* @var $model Test */
 
-$this->breadcrumbs=array(
-	'Tests'=>array('index'),
-	$model->name,
-);
-
-$this->menu=array(
-	array('label'=>'List Test', 'url'=>array('index')),
-	array('label'=>'Create Test', 'url'=>array('create')),
-	array('label'=>'Update Test', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Test', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Test', 'url'=>array('admin')),
-);
 ?>
 
-<h1>View Test #<?php echo $model->id; ?></h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="index.php?r=teacher">Панель учителя</a>
+        </li>
+        <li>
+            <a href="index.php?r=teacher/test">Тесты</a>
+        </li>
+        <li class="active"><?php echo $model->name; ?></li>
+    </ol>
+<div class="col-md-8">
+<?php
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'name',
-		'date',
-		'count',
-		'description',
-	),
-)); ?>
+$questions = Question::model()->findAllByAttributes(array("test_id" => $model->id));
+
+foreach ($questions as $question) {
+    $answers = Answer::model()->findAllByAttributes(array("question_id"=>$question->id));
+    ?>
+
+    <table class="table">
+        <thead>
+        <tr><th><?php echo $question->question; ?></th></tr>
+        </thead>
+        <tbody>
+        <?php
+        foreach ($answers as $answer)
+        {
+            ?>
+            <tr <?php if ($answer->istrue == 1) echo "class='success'"?>><td><?php echo $answer->answer; ?></td></tr>
+            <?php
+        }
+        ?>
+        </tbody>
+    </table>
+
+    <?php
+}
+
+?>
+</div>
+<div class="col-md-4">
+    <div class="list-group">
+        <a href="index.php?r=teacher/test/update&id=<?php echo $model->id; ?>" class="list-group-item"><i class="fa fa-pencil"></i> Редактировать</a>
+        <a href="#" class="list-group-item"><i class="fa fa-times"></i> Удалить</a>
+    </div>
+</div>

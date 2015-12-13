@@ -103,7 +103,7 @@
 		aCountField.name = "aCount_"+questionCount;
 		aCountField.id = "aCount_"+questionCount;
 		aCountField.setAttribute("value", "0");
-//		aCountField.setAttribute("style", "display:none");
+		aCountField.setAttribute("style", "display:none");
 		questionDiv.appendChild(aCountField);
 
 		//Ввод вопроса
