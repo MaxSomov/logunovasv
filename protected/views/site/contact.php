@@ -9,6 +9,7 @@
 //);
 ?>
 
+<div class="container">
 <h1>Контактная информация</h1>
 
 <ol class="breadcrumb">
@@ -18,11 +19,11 @@
 </ol>
 
 <div class="row">
-	<div class="col-md-8">
+	<div class="span8">
 		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4018.644991285154!2d44.90821072099433!3d53.22102050173523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x5529d5ed4887fc19!2z0KjQutC-0LvQsCDihJYgMzY!5e0!3m2!1sru!2sru!4v1448634926182" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 	</div>
 
-	<div class="col-md-4">
+	<div class="span4">
 		<p><i class="fa fa-map-marker"></i> Россия, Пензенская область, г. Пенза, ул. Собинова, 6
 		<p><i class="fa fa-envelope"></i> <a href="mailto:email@address.com">email@address.com</a>
 		<p><i class="fa fa-phone"></i> +7 (987) 654 32 12
@@ -31,7 +32,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-8">
+	<div class="span8">
 		<h2>Отправить сообщение</h2>
 		<form action="index.php?r=site/message" method="post">
 			<div class="control-group form-group">
@@ -51,4 +52,5 @@
 		</form>
 	</div>
 
+</div>
 </div>

@@ -1,57 +1,72 @@
-<?php /* @var $this Controller */ ?>
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="language" content="ru">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
 
-    <!-- blueprint CSS framework -->
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css"
-          media="screen, projection">
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css"
-          media="print">
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css"
-          media="screen, projection">
-    <![endif]-->
+    <link rel="stylesheet" href="/nova/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/nova/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="/nova/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/nova/css/main.css">
+    <link rel="stylesheet" href="/nova/css/sl-slide.css">
 
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css">
+    <script src="/nova/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
-    <link rel="stylesheet" href="/startbootstrap-modern-business-1.0.3/css/bootstrap.min.css">
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="/nova/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+          href="/nova/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+          href="/nova/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/nova/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/nova/images/ico/apple-touch-icon-57-precomposed.png">
     <link rel="stylesheet" href="/font-awesome-4.5.0/css/font-awesome.min.css">
-
-    <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
 <body>
-
-<div class="container" id="page">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<?php
+$user = User::model()->findByPk(Yii::app()->user->getId());
+if(!Yii::app()->user->isGuest && ($user->groupId==1 || $user->groupId==2)) {
+    ?>
+    <a href="index.php?r=teacher"><i class="fa fa-dashboard"></i> Панель учителя</a>
+    <?php
+}
+?>
+<!--Header-->
+<header class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
         <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.php"><i class="fa fa-home"></i> Главная</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a id="logo" class="pull-left" href="index.php"></a>
+            <div class="nav-collapse collapse pull-right">
+                <ul class="nav">
+<!--                    <li><a href="index.php"><i class="fa fa-home"></i> </a> </li>-->
+                    <?php
+                    if (!Yii::app()->user->isGuest && ($user->groupId==1 || $user->groupId==2 || $user->groupId==3)) {
+                        ?>
+                        <li><a href="index.php?r=site/page&view=tests">Тесты</a></li>
+                        <?php
+                    }
+                    ?>
+                    <li class="dropdown" id="forpupil">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ученикам <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <?php
                             $list = Forpupils::model()->findAll();
-                            foreach ($list as $li)
-                            {
+                            foreach ($list as $li) {
                                 ?>
                                 <li>
                                     <a href="index.php?r=forpupils/view&id=<?php echo $li->id; ?>"><?php echo $li->head; ?></a>
@@ -61,23 +76,22 @@
                             ?>
                         </ul>
                     </li>
-                    <li class="dropdown">
+                    <li class="dropdown" id="forparents">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Родителям <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <?php
-                                $list = Forparents::model()->findAll();
-                            foreach ($list as $li)
-                            {
+                            $list = Forparents::model()->findAll();
+                            foreach ($list as $li) {
                                 ?>
                                 <li>
                                     <a href="index.php?r=forparents/view&id=<?php echo $li->id; ?>"><?php echo $li->head; ?></a>
                                 </li>
-                            <?php
+                                <?php
                             }
                             ?>
                         </ul>
                     </li>
-                    <li class="dropdown">
+                    <li class="dropdown" id="forteachers">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Коллегам<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
@@ -91,28 +105,28 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    <li id="contact">
                         <a href="index.php?r=site/contact">Контактная информация</a>
                     </li>
-                    <li>
+                    <li id="about">
                         <a href="index.php?r=site/page&view=about">Обо мне</a>
                     </li>
                     <?php
                     if (Yii::app()->user->isGuest) {
                         ?>
 
-                        <li>
+                        <li id="login">
                             <a href="index.php?r=site/login">Вход</a>
                         </li>
-                        <li>
+                        <li id="reg">
                             <a href="index.php?r=user/create">Регистрация</a>
                         </li>
                         <?php
-                    }
-                    else{
+                    } else {
                         ?>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Yii::app()->user->name; ?><b class="caret"></b></a>
+                        <li class="dropdown" id="user">
+                            <a href="#" class="dropdown-toggle"
+                               data-toggle="dropdown"><?php echo Yii::app()->user->name; ?><b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="index.php?r=user/view&id=<?php echo Yii::app()->user->id; ?>">Профиль</a>
@@ -123,32 +137,35 @@
                             </ul>
                         </li>
 
-                    <?php
+                        <?php
                     }
                     ?>
                 </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+            </div><!--/.nav-collapse -->
         </div>
-        <!-- /.container -->
-    </nav>
+    </div>
+</header>
+<!-- /header -->
 
-    <br>
 
-    <?php echo $content; ?>
+<?php echo $content; ?>
 
-    <div class="clear"></div>
+<br>
+<!--<div class="clear"></div>-->
 
-    <div id="footer">
-        Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-        All Rights Reserved.<br/>
-        <?php echo Yii::powered(); ?>
-    </div><!-- footer -->
+<div id="footer" style="text-align: center">
+    Copyright &copy; <?php echo date('Y'); ?> by Maxon & Vitalya.<br/>
+    All Rights Reserved.<br/>
+    <?php echo Yii::powered(); ?>
+</div><!-- footer -->
 
-</div><!-- page -->
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="/startbootstrap-modern-business-1.0.3/js/bootstrap.min.js"></script>
+<script src="/nova/js/vendor/jquery-1.9.1.min.js"></script>
+<script src="/nova/js/vendor/bootstrap.min.js"></script>
+<script src="/nova/js/main.js"></script>
+<!-- Required/nova/ javascript files for Slider -->
+<script src="/nova/js/jquery.ba-cond.min.js"></script>
+<script src="/nova/js/jquery.slitslider.js"></script>
+<!-- /Required javascript files for Slider -->
 
 </body>
 </html>

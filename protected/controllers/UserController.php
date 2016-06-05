@@ -32,7 +32,7 @@ class UserController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('update'),
+				'actions'=>array('update', 'save'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -76,10 +76,11 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
-			$model->status=0;
+			$model->groupId=-1;
+			$model->photo = "noimage";
 			$model->password = CPasswordHelper::hashPassword($model->password);
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect("index.php");
 		}
 
 		$this->render('create',array(
@@ -110,7 +111,28 @@ class UserController extends Controller
 			'model'=>$model,
 		));
 	}
+		
+	public function actionSave($id)
+	{
+		$model=$this->loadModel($id);
+		//echo $model->email;
+		$model->sex = $_POST['sex'];
+		$model->birthday = strtotime($_POST['birthday']);
+		$model->email = $_POST['email'];
+		$model->info = trim($_POST['info']);
 
+		if(is_uploaded_file($_FILES["photo"]["tmp_name"]))
+		{
+			$name = time();
+			move_uploaded_file($_FILES["photo"]["tmp_name"], "images/".$name);
+			$model->photo = $name;
+		}
+		echo $model->login;
+		if ($model->save())
+			$this->redirect(array('view', 'id'=>$model->id));
+		else echo $model->getErrors();
+	}
+	
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.

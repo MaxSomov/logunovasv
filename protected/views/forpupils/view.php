@@ -3,6 +3,7 @@
 /* @var $model Forpupils */
 ?>
 
+<div class="container">
 <h1><?php echo $model->head; ?></h1>
 
 <ol class="breadcrumb">
@@ -15,6 +16,9 @@
 	<li class="active"><?php echo $model->head; ?></li>
 </ol>
 
+
 <?php
 echo $model->content;
 ?>
+</div>
+

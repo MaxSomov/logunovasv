@@ -4,7 +4,7 @@
 
 /* @TODO СДЕЛАТЬ СОРТИРОВКУ ПО ВРЕМЕНИ */
 ?>
-
+<div class="container">
 <h1>Новости</h1>
 
 <ol class="breadcrumb">
@@ -18,3 +18,4 @@
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
 )); ?>
+</div>

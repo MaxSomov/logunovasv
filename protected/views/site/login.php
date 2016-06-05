@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
 	'Login',
 );
 ?>
-
+<div class="container">
 <h1>Вход</h1>
 
 <ol class="breadcrumb">
@@ -45,8 +45,9 @@ $this->breadcrumbs=array(
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Вход', array('class'=>'btn btn-default')); ?>
+		<?php echo CHtml::submitButton('Вход', array('class'=>'btn btn-primary')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
 </div><!-- form -->
+</div>

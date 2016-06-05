@@ -6,6 +6,7 @@
 $user = User::model()->findByPk(Yii::app()->user->getId());
 ?>
 
+<div class="container">
 <h1><?php echo $model->head; ?></h1>
 
 <ol class="breadcrumb">
@@ -42,14 +43,14 @@ $user = User::model()->findByPk(Yii::app()->user->getId());
 <?php
 $comments = Comment::model()->findAllByAttributes(array('post_id'=>$model->id), array('order'=>'date DESC'));
 foreach ($comments as $comment) {
+    $user = User::model()->findByPk($comment->author_id);
     ?>
     <div class="media">
         <a class="pull-left" href="#">
-            <img class="media-object" src="http://placehold.it/64x64" alt="">
+            <img class="media-object" src="images/<?php echo $user->photo; ?>" width="64px" alt="">
         </a>
         <div class="media-body">
             <h4 class="media-heading"><?php
-                    $user = User::model()->findByPk($comment->author_id);
                 echo $user->login;
                 ?>
                 <small><?php echo date('d.m.Y, H:i', $comment->date); ?></small>
@@ -61,3 +62,4 @@ foreach ($comments as $comment) {
 }
 ?>
 
+</div>

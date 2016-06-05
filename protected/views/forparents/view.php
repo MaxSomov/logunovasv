@@ -4,6 +4,7 @@
 
 ?>
 
+<div class="container">
 <h1><?php echo $model->head; ?></h1>
 
 <ol class="breadcrumb">
@@ -19,3 +20,5 @@
 <?php
 echo $model->content;
 ?>
+
+</div>

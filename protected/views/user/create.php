@@ -12,7 +12,7 @@
 //	array('label'=>'Manage User', 'url'=>array('admin')),
 //);
 ?>
-
+<div class="container">
     <h1>Регистрация</h1>
 
     <ol class="breadcrumb">
@@ -23,3 +23,5 @@
 
 
 <?php $this->renderPartial('_form', array('model' => $model)); ?>
+
+</div>

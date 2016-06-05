@@ -3,7 +3,7 @@
 
 $user = User::model()->findByPk(Yii::app()->user->getId());
 if (!Yii::app()->user->isGuest)
-    if ($user->status == 1)
+    if ($user->groupId == 1 || $user->groupId == 2)
     {
     $mail = Mail::model()->findAllByAttributes(array("status"=>1));
 ?>
@@ -135,6 +135,9 @@ if (!Yii::app()->user->isGuest)
                 </li>
                 <li>
                     <a href="index.php?r=teacher/test"><i class="fa fa-fw fa-pencil"></i> Тесты</a>
+                </li>
+                <li>
+                    <a href="index.php?r=teacher/timetable"><i class="fa fa-table"></i> Расписание</a>
                 </li>
             </ul>
         </div>

@@ -6,6 +6,7 @@ $this->pageTitle=Yii::app()->name . ' - Обо мне';
 //	'About',
 //);
 ?>
+<div class="container">
 <h1>Обо мне</h1>
 
 <ol class="breadcrumb">
@@ -15,3 +16,5 @@ $this->pageTitle=Yii::app()->name . ' - Обо мне';
 </ol>
 
 <p>Сделать редактирование станицы из модуля учителя</p>
+
+</div>

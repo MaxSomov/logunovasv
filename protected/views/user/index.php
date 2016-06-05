@@ -11,7 +11,7 @@
 //	array('label'=>'Manage User', 'url'=>array('admin')),
 //);
 ?>
-
+<div class="container">
 <h1>Пользователи</h1>
 
 <?php //$this->widget('zii.widgets.CListView', array(
@@ -35,3 +35,5 @@
 	}
 ?>
 </table>
+
+</div>
