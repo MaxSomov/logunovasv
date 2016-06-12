@@ -1,8 +1,10 @@
 <?php
 /* @var $this TimetableController */
 /* @var $model Timetable */
+/* @var $subjects Subjects */
 /* @var $form CActiveForm */
 ?>
+
 
 <div class="form">
 

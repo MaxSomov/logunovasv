@@ -23,7 +23,7 @@
 <div class="col-md-4">
 	<div class="list-group">
 		<a href="index.php?r=teacher/post/update&id=<?php echo $model->id; ?>" class="list-group-item"><i class="fa fa-pencil"></i> Редактировать</a>
-		<a href="#" class="list-group-item"><i class="fa fa-times"></i> Удалить</a>
+		<a href="index.php?r=teacher/post/del&id=<?php echo $model->id; ?>" class="list-group-item"><i class="fa fa-times"></i> Удалить</a>
 	</div>
 </div>
 

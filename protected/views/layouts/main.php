@@ -35,11 +35,7 @@
 <body>
 <?php
 $user = User::model()->findByPk(Yii::app()->user->getId());
-if(!Yii::app()->user->isGuest && ($user->groupId==1 || $user->groupId==2)) {
-    ?>
-    <a href="index.php?r=teacher"><i class="fa fa-dashboard"></i> Панель учителя</a>
-    <?php
-}
+
 ?>
 <!--Header-->
 <header class="navbar navbar-fixed-top">
@@ -94,15 +90,16 @@ if(!Yii::app()->user->isGuest && ($user->groupId==1 || $user->groupId==2)) {
                     <li class="dropdown" id="forteachers">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Коллегам<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li>
-                                <a href="full-width.html">Презентации</a>
-                            </li>
-                            <li>
-                                <a href="sidebar.html">Конспекты уроков</a>
-                            </li>
-                            <li>
-                                <a href="faq.html">Классные часы</a>
-                            </li>
+                            <?php
+                            $list = Forteachers::model()->findAll();
+                            foreach ($list as $li) {
+                                ?>
+                                <li>
+                                    <a href="index.php?r=forteachers/view&id=<?php echo $li->id; ?>"><?php echo $li->head; ?></a>
+                                </li>
+                                <?php
+                            }
+                            ?>
                         </ul>
                     </li>
                     <li id="contact">
@@ -152,7 +149,13 @@ if(!Yii::app()->user->isGuest && ($user->groupId==1 || $user->groupId==2)) {
 
 <br>
 <!--<div class="clear"></div>-->
-
+<?php
+if(!Yii::app()->user->isGuest && ($user->groupId==1 || $user->groupId==2)) {
+?>
+<a href="index.php?r=teacher" class="btn btn-inverse"><i class="fa fa-dashboard"></i> Панель учителя</a>
+<?php
+}
+?>
 <div id="footer" style="text-align: center">
     Copyright &copy; <?php echo date('Y'); ?> by Maxon & Vitalya.<br/>
     All Rights Reserved.<br/>

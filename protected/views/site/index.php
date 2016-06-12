@@ -31,7 +31,6 @@ $this->pageTitle = Yii::app()->name;
         <div class="span9">
             <div class="blog">
                 <?php
-
                 $posts = Post::model()->findAll(array('order' => 'date DESC'));
                 $p = array_slice($posts, 0, 5);
                 foreach ($p as $post) {
@@ -87,21 +86,32 @@ $this->pageTitle = Yii::app()->name;
             <br><br>
         </div>
         <div class="span3">
+            <h3 align="center">Расписание</h3>
+            <input id="currentDay" style="display: none;" value="<?php echo date('N', time()); ?>">
             <?php
+            $t = time();
+            if (date('H', $t)>15) $t+=60*60*24;
             $timetable = Timetable::model()->findAll();
+            for ($i=0; $i<7; $i++)
+            {
+                ?>
+                <div class="panel panel-success" id="day_<?php echo $timetable[$i]->id; ?>" <?php if (date('N', $t)!=$i+1) echo "style='display:none;'"; ?>>
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><?php echo $timetable[$i]->weekday; ?></h3>
+                    </div>
+                    <div class="panel-body">
+                        <?php
+                        echo $timetable[$i]->list;
+                        if($timetable[$i]->extra!="") echo "<hr><p>".$timetable[$i]->extra."</p>";
+                        ?>
+                        <a href="#" onclick="prevDay()"><i class="fa fa-backward"></i> </a>
+                        <a href="#" style="float: right" onclick="nextDay()"><i class="fa fa-forward"></i> </a>
+                    </div>
+                </div>
+            <?php
+            }
             ?>
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><?php echo $timetable[0]->weekday; ?></h3>
-                </div>
-                <div class="panel-body">
-                    <?php
-                    echo $timetable[0]->list;
-                    ?>
-                    <a href="#"><i class="fa fa-backward"></i> </a>
-                    <a href="#" style="float: right"><i class="fa fa-forward"></i> </a>
-                </div>
-            </div>
+
         </div>
         <?php
         //
@@ -134,13 +144,21 @@ $this->pageTitle = Yii::app()->name;
 <?php
 $timetable = Timetable::model()->findAll();
 ?>
-<script>
-    var currentDay = new Date();
-    var day = currentDay.getDay();
-    var days = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Чтверг", "Пятница", "Суббота"];
-    var lists = [<?php echo "'".$timetable[6]->list."'"; for ($i=0; $i<6; $i++) echo ",'".$timetable[$i]->list."'"; ?>];
-    alert[lists];
-    function nextDay() {
 
+<script>
+    function nextDay() {
+        var day = document.getElementById('currentDay').value;
+
+        document.getElementById('day_'+day).setAttribute('style', 'display: none');
+        day++; if(day==8) day=1;
+        document.getElementById('day_'+day).setAttribute('style', '');
+        document.getElementById('currentDay').value = day;
+    }
+    function prevDay() {
+        var day = document.getElementById('currentDay').value;
+        document.getElementById('day_'+day).setAttribute('style', 'display: none');
+        day--; if(day==0) day=7;
+        document.getElementById('day_'+day).setAttribute('style', '');
+        document.getElementById('currentDay').value = day;
     }
 </script>

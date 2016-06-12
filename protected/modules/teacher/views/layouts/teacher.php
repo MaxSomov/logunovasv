@@ -123,7 +123,7 @@ if (!Yii::app()->user->isGuest)
                         </li>
 
                         <li>
-                            <a href="#">Обо мне</a>
+                            <a href="index.php?r=teacher/about/update&id=1">Обо мне</a>
                         </li>
                     </ul>
                 </li>
@@ -138,6 +138,9 @@ if (!Yii::app()->user->isGuest)
                 </li>
                 <li>
                     <a href="index.php?r=teacher/timetable"><i class="fa fa-table"></i> Расписание</a>
+                </li>
+                <li>
+                    <a href="index.php?r=teacher/subject"><i class="fa fa-list"></i> Предметы </a>
                 </li>
             </ul>
         </div>

@@ -2,6 +2,7 @@
 /* @var $this SiteController */
 
 $this->pageTitle=Yii::app()->name . ' - Обо мне';
+$about = About::model()->findByPk(1);
 //$this->breadcrumbs=array(
 //	'About',
 //);
@@ -15,6 +16,6 @@ $this->pageTitle=Yii::app()->name . ' - Обо мне';
 	<li class="active">Обо мне</li>
 </ol>
 
-<p>Сделать редактирование станицы из модуля учителя</p>
+<?php echo $about->content; ?>
 
 </div>
